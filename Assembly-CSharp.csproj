@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/PlayerController2D.cs" />
+    <Compile Include="Assets/Scripts/LevelExit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
