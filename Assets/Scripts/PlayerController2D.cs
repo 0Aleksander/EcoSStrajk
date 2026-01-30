@@ -91,9 +91,12 @@ public class PlayerController2D : MonoBehaviour
 
         rb.AddForce(Vector2.right * movement);
 
-        // Optional clamp for consistent max speed
-        rb.linearVelocity = new Vector2(Mathf.Clamp(rb.linearVelocity.x, -moveSpeed, moveSpeed), rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(
+            Mathf.Clamp(rb.linearVelocity.x, -moveSpeed, moveSpeed),
+            rb.linearVelocity.y
+        );
     }
+
 
     private void Jump()
     {
@@ -101,23 +104,23 @@ public class PlayerController2D : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
+
     private void ApplyBetterJumpFeel()
     {
-        // Falling -> heavier gravity
         if (rb.linearVelocity.y < 0f)
         {
             rb.gravityScale = 3f * fallGravityMultiplier;
         }
-        // Rising but jump released -> shorter hop
         else if (rb.linearVelocity.y > 0f && !jumpHeld)
         {
             rb.gravityScale = 3f * lowJumpMultiplier;
         }
         else
         {
-            rb.gravityScale = 3f; // base gravity
+            rb.gravityScale = 3f;
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {
